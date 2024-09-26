@@ -20,7 +20,8 @@ public class RemarkCommandParserTest {
     public void parse_indexSpecified_success() {
         // have remark
         Index targetIndex = INDEX_FIRST_PERSON;
-        String userInput = targetIndex.getOneBased() + " " + PREFIX_REMARK + nonEmptyRemark;
+        String userInput = "1" + " " + PREFIX_REMARK + nonEmptyRemark;
+        // String userInput = targetIndex.getOneBased() + " " + PREFIX_REMARK + nonEmptyRemark;
         RemarkCommand expectedCommand = new RemarkCommand(INDEX_FIRST_PERSON, nonEmptyRemark);
         assertParseSuccess(parser, userInput, expectedCommand);
         // no remark
