@@ -1,6 +1,8 @@
 package seedu.address.ui;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.hamcrest.core.StringContains.containsString;
+import static org.testfx.api.FxAssert.verifyThat;
+import static org.testfx.matcher.control.LabeledMatchers.hasText;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,25 +10,26 @@ import org.junit.jupiter.api.Test;
 import org.testfx.api.FxToolkit;
 import org.testfx.framework.junit5.ApplicationTest;
 
-import javafx.scene.control.ListView;
+import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import seedu.address.MainApp;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Schedule;
+import seedu.address.model.person.Subject;
 import seedu.address.testutil.PersonBuilder;
 
 public class MainAppTest extends ApplicationTest {
 
-    String name = PersonBuilder.DEFAULT_NAME;
-    String phone = PersonBuilder.DEFAULT_PHONE;
-    String email = PersonBuilder.DEFAULT_EMAIL;
-    String address = PersonBuilder.DEFAULT_ADDRESS;
-    String schedule = PersonBuilder.DEFAULT_SCHEDULE;
-    String subject = PersonBuilder.DEFAULT_SUBJECT;
-    String fee = PersonBuilder.DEFAULT_FEE;
-    String paid = PersonBuilder.DEFAULT_PAID;
-    String owed = PersonBuilder.DEFAULT_OWED_AMOUNT;
+    private final String name = PersonBuilder.DEFAULT_NAME;
+    private final String phone = PersonBuilder.DEFAULT_PHONE;
+    private final String email = PersonBuilder.DEFAULT_EMAIL;
+    private final String address = PersonBuilder.DEFAULT_ADDRESS;
+    private final String schedule = PersonBuilder.DEFAULT_SCHEDULE;
+    private final String subject = PersonBuilder.DEFAULT_SUBJECT;
+    private final String fee = PersonBuilder.DEFAULT_FEE;
+    private final String paid = PersonBuilder.DEFAULT_PAID;
+    private final String owedAmount = PersonBuilder.DEFAULT_OWED_AMOUNT;
 
     @BeforeAll
     public static void setup() throws Exception {
@@ -52,11 +55,11 @@ public class MainAppTest extends ApplicationTest {
         write(" p/" + phone);
         write(" e/" + email);
         write(" a/" + address);
-        write(" time/" + schedule);
-        write(" subject/" + subject);
-        write(" fee/" + fee);
+        write(" t/" + schedule);
+        write(" s/" + subject);
+        write(" f/" + fee);
         write(" paid/" + paid);
-        write(" owed/" + owed);
+        write(" owed/" + owedAmount);
 
         push(KeyCode.ENTER);
     }
@@ -65,25 +68,28 @@ public class MainAppTest extends ApplicationTest {
     public void personHasAllDetailsShown() {
         addPerson();
 
+        Subject testSubject = new Subject(subject);
+        Schedule testSchedule = new Schedule(schedule);
 
+        //verify visible
+        verifyThat("#personList #personListView #name", Node::isVisible);
+        verifyThat("#personList #personListView #subjectAndSchedule", Node::isVisible);
+        verifyThat("#personList #personListView #phone", Node::isVisible);
+        verifyThat("#personList #personListView #address", Node::isVisible);
+        verifyThat("#personList #personListView #email", Node::isVisible);
+        verifyThat("#personList #personListView #rate", Node::isVisible);
+        verifyThat("#personList #personListView #paid", Node::isVisible);
+        verifyThat("#personList #personListView #owedAmount", Node::isVisible);
 
-        ListView<PersonCard> personListView = lookup("#personList #personListView").queryListView();
-//        Label label = lookup("#personList #personListView #cardPane").query();
-//        System.out.println("Label node name: " + label.getClass().getSimpleName());
-
-        Person person = personListView.getItems().get(0).person;
-
-        //name phone, address email subject and schedule, rate paid owedamount
-        assertEquals(person.getName().fullName, name);
-        assertEquals(person.getPhone().value, phone);
-        assertEquals(person.getAddress().value, address);
-        assertEquals(person.getEmail().value, email);
-        assertEquals(person.getSubject().toString(), subject);
-        assertEquals(person.getSchedule().value, schedule);
-        assertEquals(person.getRate().toString(), fee);
-        assertEquals(person.getPaid().toString(), subject);
-        assertEquals(person.getOwedAmount().toString(), schedule);
-
-
+        //verify contains text
+        verifyThat("#personList #personListView #name", hasText(name));
+        verifyThat("#personList #personListView #subjectAndSchedule", hasText(containsString(testSubject.toString())));
+        verifyThat("#personList #personListView #subjectAndSchedule", hasText(containsString(testSchedule.toString())));
+        verifyThat("#personList #personListView #phone", hasText(phone));
+        verifyThat("#personList #personListView #address", hasText(address));
+        verifyThat("#personList #personListView #email", hasText(email));
+        verifyThat("#personList #personListView #rate", hasText(containsString(fee)));
+        verifyThat("#personList #personListView #paid", hasText(containsString(paid)));
+        verifyThat("#personList #personListView #owedAmount", hasText(containsString(owedAmount)));
     }
 }
