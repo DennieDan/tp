@@ -3,6 +3,15 @@ package seedu.address.ui;
 import static org.hamcrest.core.StringContains.containsString;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.control.LabeledMatchers.hasText;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OWED_AMOUNT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PAID;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_RATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SCHEDULE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SUBJECT;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -51,15 +60,15 @@ public class MainAppTest extends ApplicationTest {
         clickOn("#commandTextField");
 
         write(AddCommand.COMMAND_WORD);
-        write(" n/" + name);
-        write(" p/" + phone);
-        write(" e/" + email);
-        write(" a/" + address);
-        write(" t/" + schedule);
-        write(" s/" + subject);
-        write(" f/" + fee);
-        write(" paid/" + paid);
-        write(" owed/" + owedAmount);
+        write(" " + PREFIX_NAME + name);
+        write(" " + PREFIX_PHONE + phone);
+        write(" " + PREFIX_EMAIL + email);
+        write(" " + PREFIX_ADDRESS + address);
+        write(" " + PREFIX_SCHEDULE + schedule);
+        write(" " + PREFIX_SUBJECT + subject);
+        write(" " + PREFIX_RATE + fee);
+        write(" " + PREFIX_PAID + paid);
+        write(" " + PREFIX_OWED_AMOUNT + owedAmount);
 
         push(KeyCode.ENTER);
     }
