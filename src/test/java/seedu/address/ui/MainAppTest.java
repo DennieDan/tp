@@ -42,6 +42,7 @@ public class MainAppTest extends ApplicationTest {
 
     @BeforeAll
     public static void setup() throws Exception {
+        System.setProperty("java.awt.headless", "true");
         // Use FxToolkit to launch the JavaFX Application correctly
         FxToolkit.registerPrimaryStage();
         FxToolkit.setupApplication(MainApp::new);
