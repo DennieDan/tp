@@ -13,6 +13,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_RATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SCHEDULE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SUBJECT;
 
+import java.awt.*;
+
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -89,10 +91,8 @@ public class MainAppTest extends ApplicationTest {
 
     @Test
     public void personHasAllDetailsShown() {
-        if (System.getenv("CI") != null) {
-            // Running in CI, skip UI-related initialization
-            return;
-        }
+        // Skip test if running in headless mode
+        Assumptions.assumeTrue(!GraphicsEnvironment.isHeadless(), "Skipping UI test in headless environment");
         addPerson();
 
         Subject testSubject = new Subject(subject);
