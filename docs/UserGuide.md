@@ -78,7 +78,9 @@ Adds a person to the address book.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS t/SCHEDULE s/SUBJECT f/FEE [paid/PAID_AMOUNT] [owed/OWED_AMOUNT]`
 
-<box type="note" seamless>**NOTE:** 
+<box type="note" seamless>
+**NOTE:** 
+
 1. <b>SCHEDULE</b> must be in the format of `DAY_OF_THE_WEEK`-`START_TIME`-`END_TIME`
 * <b>DAY_OF_THE_WEEK</b> includes Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
 * <b>START_TIME</b> and <b>END_TIME</b> are represented as `HHmm`.
@@ -176,7 +178,8 @@ AddressBook data are saved in the hard disk automatically after any command that
 
 AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
-<box type="warning" seamless>**Caution:**
+<box type="warning" seamless>
+**Caution:**
 If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
@@ -212,6 +215,7 @@ Action     | Format, Examples
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Income** | `income`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List**   | `list`
 **Help**   | `help`
