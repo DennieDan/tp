@@ -21,7 +21,7 @@ If you can type fast, UGTeach can get your contact management tasks done **faste
 
 2. Download the latest `.jar` file from [here](https://github.com/AY2425S1-CS2103T-F14a-1/tp/releases).
 
-3. Copy the file to the folder you want to use as the _home folder_ for your address book.
+3. Copy the file to the folder you want to use as the _home folder_ for your UGTeach's address book.
 
 4. Open a command terminal, `cd` into the folder that you put the jar file in
 
@@ -100,7 +100,7 @@ Shows a message explaining how to access the help page.
 
 ### Adding a student: `add`
 
-Adds a student to the address book.
+Adds a student to the UGTeach's address book.
 
 **Format:** `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS t/SCHEDULE s/SUBJECT r/RATE [paid/PAID_AMOUNT] [owed/OWED_AMOUNT]`
 
@@ -138,13 +138,13 @@ Adds a student to the address book.
 
 ### Listing all students: `list`
 
-Shows a list of all students in the address book.
+Shows a list of all students in the UGTeach's address book.
 
 Format: `list`
 
 ### Editing a student: `edit`
 
-Edits an existing student in the address book.
+Edits an existing student in the UGTeach's address book.
 
 **Format:** `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [r/RATE] [paid/PAID_AMOUNT] [owed/OWED_AMOUNT]`
 
@@ -235,7 +235,7 @@ Updates the amount of tuition fee paid by the specified student after a lesson.
 **Format:** `pay INDEX hr/HOURS_PAID`
 
 **Example:**
-* `pay 1 hr/2.5` updates the tuition amount paid by the 1st student in the address book.
+* `pay 1 hr/2.5` updates the tuition amount paid by the 1st student in the UGTeach's address book.
   
 **Output:**
 ![payResult.png](images/payResult.png)
@@ -303,7 +303,7 @@ Updates the amount of tuition fee paid by the student and the amount of tuition 
 
 ### Deleting a student : `delete`
 
-Deletes the specified student from the address book.
+Deletes the specified student from the UGTeach's address book.
 
 **Format:** `delete INDEX`
 
@@ -339,7 +339,7 @@ to find your schedule for a specific day of the week.
 
 ### Clearing all entries : `clear`
 
-Clears all entries from the address book.
+Clears all entries from the UGTeach's address book.
 
 Format: `clear`
 
