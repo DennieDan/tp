@@ -610,7 +610,16 @@ testers are expected to do more *exploratory* testing.
 
 ### Saving data
 
+The data file is saved at {location of `ugteach.jar`}/data/ugteach.json.
+
+<box type="important" header="##### Caution">
+   Consider duplicating your current data file and renaming it to keep a backup, as lost data cannot be recovered. 
+</box>
+
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. Go to the location of the data file, delete it/modify one of the title (e.g., change `owedAmount` to `owe`) so that it is invalid.
+   
+   1. Launch the app.
 
+   1. Expected: Sample data will be shown instead of the user's data. User's data in `ugteach.json` will then be overwritten.
